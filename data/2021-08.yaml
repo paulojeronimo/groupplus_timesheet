@@ -1,0 +1,14 @@
+config:
+  timezone: America/Sao_Paulo
+  year: 2021
+  week_number: 8
+timesheet:
+  tuesday:
+    - start_time: 05:30
+      end_time: 08:30
+  wednesday:
+    - start_time: 05:30
+      end_time: 08:30
+  thursday:
+    - start_time: 05:30
+      end_time: 08:30

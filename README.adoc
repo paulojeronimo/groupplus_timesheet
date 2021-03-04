@@ -1,0 +1,12 @@
+= groupplus_timesheet generator
+:icons: font
+
+WARNING: *Under development! Code not yet finished!*
+
+----
+$ python3 -m pip install --user ruamel.yaml
+----
+
+----
+$ ./timesheet.sh
+----
