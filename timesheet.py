@@ -2,8 +2,7 @@
 
 import yaml
 import functools
-import operator
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
 
 week_days = {
     'monday' : 1,
@@ -17,30 +16,45 @@ week_days = {
 
 TIME_FMT = '%H:%M'
 DATE_TIME_FMT = f'%Y-%m-%d {TIME_FMT}'
-toHM = lambda duration : ':'.join(str(duration).split(':')[:2])
 
-def durations_by_time_periods(time_periods, date, cb = None):
-    durations = []
+def timedelta_to_hm(timedelta):
+    return timedelta.seconds // 3600, (timedelta.seconds // 60) % 60
+
+
+def hm_to_str(hm):
+    h, m = hm
+    return f"{h:02d}:{m:02d}"
+
+
+def hm_add(x, y):
+    h1, m1 = x
+    h2, m2 = y
+    return h1 + h2, m1 + m2
+
+
+def hms_by_time_periods(time_periods, date, cb = None):
+    hms = []
     for time_period in time_periods:
-        start_t = datetime.strptime(f"{date} {time_period['start_time']}", DATE_TIME_FMT)
-        end_t = datetime.strptime(f"{date} {time_period['end_time']}", DATE_TIME_FMT)
-        duration = end_t - start_t
-        durations.append(duration)
+        start_t = time_period['start_time']
+        end_t = time_period['end_time']
+        hm = timedelta_to_hm(datetime.strptime(f"{date} {end_t}", DATE_TIME_FMT) - datetime.strptime(f"{date} {start_t}", DATE_TIME_FMT))
+        hms.append(hm)
         if cb is not None:
-            cb(start_t, end_t, duration)
-    return durations
+            cb(start_t, end_t, hm)
+    return hms
+
 
 with open(r'data.yaml') as file:
     data = yaml.full_load(file)
     year = data['config']['year']
     week_number = data['config']['week_number']
     timesheet = data['timesheet']
-    week_total = timedelta()
+    week_total = (0, 0)
     for week_day, time_periods in timesheet.items():
         date = date.fromisocalendar(year, week_number, week_days[week_day])
         print(week_day, "(", date, "):")
-        day_total = functools.reduce(operator.add, durations_by_time_periods(time_periods, date,
-            lambda start, end, duration: print("\t", start.strftime(TIME_FMT), "->", end.strftime(TIME_FMT), ":", toHM(duration))))
-        print("\ttotal : ", toHM(day_total))
-        week_total = week_total + day_total
-    print("total : ", toHM(week_total))
+        day_total = functools.reduce(hm_add, hms_by_time_periods(time_periods, date,
+            lambda start_t, end_t, hm: print("\t", start_t, "->", end_t, ":", hm_to_str(hm))), (0, 0))
+        print("\ttotal :", hm_to_str(day_total))
+        week_total = hm_add(week_total, day_total)
+    print("total :", hm_to_str(week_total))

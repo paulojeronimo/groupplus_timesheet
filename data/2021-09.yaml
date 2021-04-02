@@ -1,18 +1,34 @@
+---
 config:
-  timezone: America/Sao_Paulo
   year: 2021
   week_number: 9
 timesheet:
   monday:
-    - start_time: 05:30
-      end_time: 08:30
+    - start_time: '05:15'
+      end_time: '08:30'
+      links:
+        - https://osodevops.slack.com/archives/C01EH45U6KF/p1614586695000600
   tuesday:
-    - start_time: 01:30
-      end_time: 05:30
-    - start_time: 05:30
-      end_time: 08:30
-      #- start_time: 16:00
-      #end_time: 17:00
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://osodevops.slack.com/archives/C01EH45U6KF/p1614675059019900
+    - start_time: '13:07'  # Meeting with Sion, Ian and Tiago
+      end_time: '14:07'
+      links:
+        - https://osodevops.slack.com/archives/C01EH45U6KF/p1614701260034200
   wednesday:
-    - start_time: 05:30
-      end_time: 08:30
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://github.com/osodevops/groupplus_dev_notes/blob/main/daily/2021-03-03/paulojeronimo.adoc
+  thursday:
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://github.com/osodevops/groupplus_dev_notes/blob/main/daily/2021-03-04/paulojeronimo.adoc
+  friday:
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://github.com/osodevops/groupplus_dev_notes/blob/main/daily/2021-03-05/paulojeronimo.adoc

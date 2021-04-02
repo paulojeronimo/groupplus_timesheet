@@ -1,0 +1,32 @@
+---
+config:
+  year: 2021
+  week_number: 12
+timesheet:
+  monday:
+    - start_time: '05:00'
+      end_time: '08:30'
+      links:
+        - https://github.com/osodevops/groupplus_dev_notes/blob/main/daily/2021-03-22/paulojeronimo.adoc
+  tuesday:
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://osodevops.slack.com/archives/C01EH45U6KF/p1616498069066200
+  wednesday:
+    - start_time: '04:31'
+      end_time: '04:32'
+      links:
+        - https://osodevops.slack.com/archives/C01EH45U6KF/p1616571093070200
+    - start_time: '19:00'
+      end_time: '22:00'
+  thursday:
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://github.com/osodevops/groupplus_dev_notes/blob/main/daily/2021-03-25/paulojeronimo.adoc
+  friday:
+    - start_time: '05:30'
+      end_time: '08:30'
+      links:
+        - https://github.com/osodevops/groupplus_dev_notes/blob/main/daily/2021-03-26/paulojeronimo.adoc

@@ -10,3 +10,10 @@ $ python3 -m pip install --user ruamel.yaml
 ----
 $ ./timesheet.sh
 ----
+
+Sample reports:
+
+----
+$ ./february-totals.sh
+$ ./march-totals.sh
+----
