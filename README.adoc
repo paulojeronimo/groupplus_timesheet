@@ -14,6 +14,6 @@ $ ./timesheet.sh
 Sample reports:
 
 ----
-$ ./february-totals.sh
-$ ./march-totals.sh
+$ ./totals.sh 2021 2 # <- February totals
+$ ./totals.sh 2021 3 # <- March totals
 ----
