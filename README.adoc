@@ -3,12 +3,14 @@
 
 WARNING: *Under development! Code not yet finished!*
 
+== Python version
+
 ----
 $ python3 -m pip install --user ruamel.yaml
 ----
 
 ----
-$ ./timesheet.sh
+$ ./py-timesheet.sh
 ----
 
 Sample reports:
@@ -17,3 +19,13 @@ Sample reports:
 $ ./totals.sh 2021 2 # <- February totals
 $ ./totals.sh 2021 3 # <- March totals
 ----
+
+== jq version
+
+----
+$ ./jq-timesheet.sh 2021-01-04 `date +%F` # <- first arg will be used to get the first week for 2021.
+----
+
+== Java version
+
+== Kotlin version

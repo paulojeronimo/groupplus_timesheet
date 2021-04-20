@@ -12,7 +12,7 @@ mkdir -p $output_dir
 timesheet=`mktemp`
 {
 	header $month
-	./timesheet.sh $(get-range-of-dates-for-year-month $year $month) > $timesheet
+	./py-timesheet.sh $(get-range-of-dates-for-year-month $year $month) > $timesheet
 	cat $timesheet
 	totalize
 } | tee $output_dir/$year-$month.txt

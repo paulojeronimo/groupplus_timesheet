@@ -33,6 +33,7 @@ get-week-from-file-name() {
 
 	file_name=${file_name##*/}
 	file_name=${file_name%.yaml}
+	file_name=${file_name%.json}
 	echo -n $file_name
 }
 
@@ -64,6 +65,21 @@ get-first-year-in-data-files() {
 
 get-last-year-in-data-files() {
 	get-year-in-data-files last
+}
+
+get-week-in-data-files() {
+	local year=${1:-2021}
+	local week=${2:-first}
+	ls data/* | sed "s/\(data\/$year-\)\(.*\)\(.yaml\)/\2/g" | sort |
+	{ [ $week = first ] && head -1 || tail -1; }
+}
+
+get-first-week-in-data-files() {
+	get-week-in-data-files first
+}
+
+get-last-week-in-data-files() {
+	get-week-in-data-files last
 }
 
 totalize() {
